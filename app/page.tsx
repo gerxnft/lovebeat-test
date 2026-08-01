@@ -27,25 +27,33 @@ function MusicPlayer() {
   };
 
   return (
-    <aside className="player" aria-label="Now playing Love Ya! by Arie">
+    <aside
+      className="fixed right-3 bottom-3 z-50 flex h-[74px] w-[calc(100%-24px)] max-w-[420px] items-center gap-2.5 border border-[#352553] border-b-[9px] border-b-[#19102d] bg-[#0a031b]/98 py-2.5 pr-3 pl-[82px] shadow-[0_22px_55px_#000a,inset_0_1px_#ffffff0a] sm:right-5 sm:bottom-5 sm:h-[82px] sm:gap-3.5 sm:py-3 sm:pr-5 sm:pl-[116px] lg:right-7 lg:bottom-7"
+      aria-label="Now playing Love Ya! by Arie"
+    >
       <audio ref={audioRef} src="/love-ya-lovebeat.mp3" loop preload="metadata" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
-      <div className="player-art" aria-hidden="true"><img src="/images/render2.png" alt="" /></div>
-      <button className="play-button" onClick={toggle} aria-label={playing ? "Pause Love Ya" : "Play Love Ya"}>
-        <span className={playing ? "pause-icon" : "play-icon"} aria-hidden="true" />
+      <div className="pointer-events-none absolute bottom-[-9px] left-[-48px] z-10 h-[175px] w-[150px] overflow-hidden drop-shadow-[0_8px_8px_#0009] sm:bottom-[-10px] sm:left-[-55px] sm:h-[205px] sm:w-[190px]" aria-hidden="true">
+        <img className="absolute bottom-[-5px] left-[-107px] w-[335px] max-w-none sm:left-[-120px] sm:w-[390px]" src="/images/render2.png" alt="" />
+      </div>
+      <button
+        className="relative z-20 grid size-[42px] shrink-0 cursor-pointer place-items-center border-0 bg-linear-to-br from-[#8e3dff] to-[#6320ed] text-white shadow-[0_0_25px_#7b2cff28] transition hover:-translate-y-px hover:from-[#a35cff] hover:to-[#762cff] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#52e7ff] sm:size-12"
+        onClick={toggle}
+        aria-label={playing ? "Pause Love Ya" : "Play Love Ya"}
+      >
+        <span className={playing ? "h-[13px] w-[10px] border-x-[3px] border-white" : "ml-[3px] h-0 w-0 border-y-[6px] border-l-[9px] border-y-transparent border-l-white"} aria-hidden="true" />
       </button>
-      <div className="track-info">
-        <span className="now-playing">NOW PLAYING</span>
-        <strong>Love Ya!</strong>
-        <span>Arie · LoveBeat Song</span>
+      <div className="relative z-20 flex min-w-[90px] flex-1 flex-col sm:min-w-[105px]">
+        <span className="text-[7px] font-black tracking-[.2em] text-[#52e7ff]">NOW PLAYING</span>
+        <strong className="my-[3px] text-[12px] leading-none sm:mt-1 sm:mb-[3px] sm:text-[13px]">Love Ya!</strong>
+        <span className="truncate text-[8px] text-[#716881]">Arie · LoveBeat Song</span>
       </div>
-      <div className={`equalizer ${playing ? "is-playing" : ""}`} aria-hidden="true">
-        <i /><i /><i /><i />
+      <div className="relative z-20 hidden h-4 items-center gap-0.5 sm:flex" aria-hidden="true">
+        {[0, 150, 300, 75].map((delay) => <i key={delay} className={`h-2 w-0.5 bg-[#52e7ff] ${playing ? "animate-pulse" : ""}`} style={{ animationDelay: `${delay}ms` }} />)}
       </div>
-      <div className="volume-wrap">
-        <span className="speaker" aria-hidden="true" />
-        <input className="volume" type="range" min="0" max="100" value={volume}
-          onChange={(event) => setVolume(Number(event.target.value))} aria-label="Volume"
-          style={{ "--volume": `${volume}%` } as React.CSSProperties} />
+      <div className="relative z-20 ml-auto hidden items-center gap-2 md:flex">
+        <span className="h-0 w-0 border-y-[5px] border-r-[7px] border-y-transparent border-r-[#52e7ff]" aria-hidden="true" />
+        <input className="h-4 w-14 cursor-pointer accent-[#7b2cff]" type="range" min="0" max="100" value={volume}
+          onChange={(event) => setVolume(Number(event.target.value))} aria-label="Volume" />
       </div>
     </aside>
   );
