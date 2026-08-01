@@ -27,10 +27,11 @@ function MusicPlayer() {
   };
 
   return (
-    <aside className="player" aria-label="Music player">
-      <audio ref={audioRef} src="/love-ya-lovebeat.mp3" loop preload="metadata" />
+    <aside className="player" aria-label="Now playing Love Ya! by Arie">
+      <audio ref={audioRef} src="/love-ya-lovebeat.mp3" loop preload="metadata" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
+      <div className="player-art" aria-hidden="true"><img src="/images/render2.png" alt="" /></div>
       <button className="play-button" onClick={toggle} aria-label={playing ? "Pause Love Ya" : "Play Love Ya"}>
-        {playing ? "Ⅱ" : "▶"}
+        <span className={playing ? "pause-icon" : "play-icon"} aria-hidden="true" />
       </button>
       <div className="track-info">
         <span className="now-playing">NOW PLAYING</span>
@@ -40,15 +41,12 @@ function MusicPlayer() {
       <div className={`equalizer ${playing ? "is-playing" : ""}`} aria-hidden="true">
         <i /><i /><i /><i />
       </div>
-      <input
-        className="volume"
-        type="range"
-        min="0"
-        max="100"
-        value={volume}
-        onChange={(event) => setVolume(Number(event.target.value))}
-        aria-label="Volume"
-      />
+      <div className="volume-wrap">
+        <span className="speaker" aria-hidden="true" />
+        <input className="volume" type="range" min="0" max="100" value={volume}
+          onChange={(event) => setVolume(Number(event.target.value))} aria-label="Volume"
+          style={{ "--volume": `${volume}%` } as React.CSSProperties} />
+      </div>
     </aside>
   );
 }
@@ -131,7 +129,7 @@ export default function Home() {
       </section>
 
       <section className="download shell" id="download">
-        <img src="/images/render2.png" alt="LoveBeat dancer" />
+        <img src="/images/render3.png" alt="LoveBeat dancer" />
         <div>
           <span className="section-number">READY WHEN YOU ARE</span>
           <h2>YOUR NEXT<br />BEAT STARTS <em>NOW.</em></h2>
