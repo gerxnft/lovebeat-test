@@ -48,7 +48,13 @@ function MusicPlayer() {
         <span className="truncate text-[8px] text-[#716881]">Arie · LoveBeat Song</span>
       </div>
       <div className="relative z-20 hidden h-4 items-center gap-0.5 sm:flex" aria-hidden="true">
-        {[0, 150, 300, 75].map((delay) => <i key={delay} className={`h-2 w-0.5 bg-[#52e7ff] ${playing ? "animate-pulse" : ""}`} style={{ animationDelay: `${delay}ms` }} />)}
+        {[0, 140, 280, 70].map((delay, index) => (
+          <i
+            key={delay}
+            className={`w-0.5 origin-center bg-[#52e7ff] ${index % 2 === 0 ? "h-2" : "h-3"} ${playing ? "animate-[music-bar_.55s_ease-in-out_infinite_alternate]" : ""}`}
+            style={{ animationDelay: `${delay}ms`, animationDuration: `${480 + index * 90}ms` }}
+          />
+        ))}
       </div>
       <div className="relative z-20 ml-auto hidden items-center gap-2 md:flex">
         <span className="h-0 w-0 border-y-[5px] border-r-[7px] border-y-transparent border-r-[#52e7ff]" aria-hidden="true" />

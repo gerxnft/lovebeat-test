@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@keyframes music-bar {
+  from { transform: scaleY(.28); opacity: .65; }
+  to { transform: scaleY(1.25); opacity: 1; }
+}
+
 :root { --ink: #0b0618; --purple: #7b2cff; --violet: #a86bff; --cyan: #52e7ff; --paper: #f7f5fb; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
