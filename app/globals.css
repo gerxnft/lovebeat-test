@@ -100,10 +100,26 @@ h2 { font-size: clamp(48px, 5.8vw, 88px); line-height: .88; letter-spacing: -.06
 .download-button.light { background: white; color: var(--purple); display: inline-flex; margin-top: 20px; box-shadow: 0 15px 50px #3a007d80; }
 .download small { display: block; margin-top: 22px; font-size: 8px; letter-spacing: .17em; opacity: .7; }
 
-.footer { min-height: 140px; display: flex; align-items: center; justify-content: space-between; }
-.footer p, .footer a { font-size: 8px; letter-spacing: .15em; color: #7c748d; }
-.footer > div:last-child { display: flex; gap: 22px; }
-.footer-brand img { width: 110px; }
+.footer { position: relative; padding: 76px 0 120px; overflow: hidden; background: linear-gradient(180deg, #0b0618 0%, #080311 100%); border-top: 1px solid #9b5cff2b; color: white; text-align: center; }
+.footer::before { content: ""; position: absolute; width: 520px; height: 180px; top: -140px; left: 50%; transform: translateX(-50%); border-radius: 50%; background: #7b2cff; filter: blur(90px); opacity: .22; pointer-events: none; }
+.footer-inner { position: relative; display: flex; flex-direction: column; align-items: center; }
+.footer-logos { min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 22px; }
+.footer-logos img { width: 120px; max-height: 54px; object-fit: contain; filter: grayscale(1) brightness(0) invert(1); opacity: .82; }
+.footer-logos img:last-child { width: 82px; }
+.footer-copyright { margin: 0; color: #c8bfd8; font-size: 11px; letter-spacing: .08em; }
+.footer-disclaimer { width: min(760px, 100%); margin: 13px auto 0; color: #71677f; font-size: 10px; line-height: 1.75; letter-spacing: .04em; }
+.footer-legal-primary { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.footer-legal-primary a { padding: 12px 17px; border: 1px solid #9b5cff30; background: #ffffff05; color: #c8bfd8; font-size: 9px; font-weight: 900; letter-spacing: .13em; transition: .25s; }
+.footer-legal-primary a:hover { color: white; border-color: var(--purple); background: #7b2cff25; transform: translateY(-2px); }
+.footer-legal-secondary { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; margin-top: 18px; }
+.footer-legal-secondary a { color: #756b83; font-size: 9px; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 4px; transition: .2s; }
+.footer-legal-secondary a:hover { color: var(--cyan); }
+.legal-shell { min-height: 100vh; background: #05070b; color: white; }
+.legal-header { width: min(1080px, calc(100% - 32px)); height: 96px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ffffff1a; }
+.legal-header img { width: 150px; height: auto; }
+.legal-header > a:last-child { color: #aaa2b8; font-size: 10px; font-weight: 900; letter-spacing: .16em; transition: color .2s; }
+.legal-header > a:last-child:hover { color: var(--cyan); }
+.legal-content { width: min(896px, calc(100% - 32px)); min-height: 65vh; margin: 0 auto; padding: 64px 0 80px; }
 
 .player { position: fixed; z-index: 50; right: 22px; bottom: 22px; width: 345px; padding: 13px; background: #100b20e8; border: 1px solid #ffffff21; box-shadow: 0 18px 50px #0009; backdrop-filter: blur(18px); display: flex; align-items: center; gap: 12px; }
 .play-button { width: 44px; height: 44px; flex: 0 0 auto; border: 0; background: var(--purple); color: white; cursor: pointer; font-size: 13px; }
@@ -133,7 +149,7 @@ h2 { font-size: clamp(48px, 5.8vw, 88px); line-height: .88; letter-spacing: -.06
   .intro { grid-template-columns:1fr; gap:25px; padding-top:110px; }.features { grid-template-columns:1fr; }
   .gallery-section { min-height:900px; }.gallery-copy h2{width:100%;}.gallery-stage{position:relative;top:auto;right:auto;width:105%;height:430px;margin:60px 0 0 5%;}.main-shot{width:90%;}
   .download { min-height:780px; align-items:flex-start; padding-top:90px; }.download > div{width:100%;}.download > img{width:100%;left:-25%;opacity:.5;}.download h2{font-size:58px;}
-  .footer { flex-direction:column;justify-content:center;gap:22px;padding:40px 0 130px; }.player{width:calc(100% - 28px);right:14px;bottom:14px;}.volume{margin-left:auto;}
+  .footer { padding:64px 0 150px; }.player{width:calc(100% - 28px);right:14px;bottom:14px;}.volume{margin-left:auto;}
 }
 
 @media (max-width: 520px) {

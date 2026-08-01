@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Footer from "./components/Footer";
 
 const screenshots = [1, 2, 3, 4, 5];
 
@@ -140,11 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer shell">
-        <div className="brand footer-brand"><img src="/images/logo.png" alt="LoveBeat" /></div>
-        <p>© 2026 LOVE BEAT NEXUS. ALL RIGHTS RESERVED.</p>
-        <div><a href="#">COMMUNITY</a><a href="#">SUPPORT</a><a href="#">TERMS</a></div>
-      </footer>
+      <Footer />
 
       <MusicPlayer />
       {showComingSoon && (
